@@ -8,12 +8,21 @@ public class Enemy : Actor {
     public List<GameObject> itemDrops = new List<GameObject>();
     float shootInterval = 1.5f;
 
-    private void OnEnable() {
+    private void OnEnable() 
+    {
         allEnemies.Add(this);
+
+        Invoke("SetHealth", 0.1f);
     }
 
     private void OnDisable() {
         allEnemies.Remove(this);
+    }
+
+    private void SetHealth()
+    {
+        healthSystem.lives = 0;
+        healthSystem.shield = 0;
     }
 
     public override Vector3 GetMovementDirection()

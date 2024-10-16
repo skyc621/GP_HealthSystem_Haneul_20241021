@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public LayerMask projectileHitsType;
     public float speed = 10.0f;
-    public int damageAmount = 30;
+    public int damageAmount = -30;
     public float lifeTime = 20.0f;
     private void Update()
     {
