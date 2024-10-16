@@ -13,7 +13,7 @@ public class HealthSystem
 
     // Optional XP system variables
     public int xp;
-    public int level;
+    public int level = 1;
 
     public HealthSystem()
     {
@@ -49,7 +49,7 @@ public class HealthSystem
 
                 break;
         }
-        return "HP " + health.ToString() + " -> " + healthStatus + "  " + "   Def " + shield.ToString() + " Lives " + lives.ToString();
+        return "HP " + health.ToString() + " -> " + healthStatus + "  " + "   Def " + shield.ToString() + " Lives " + lives.ToString() + "    XP " + xp + " Level " + level;
     }
 
     public void TakeDamage(int damage)
@@ -132,5 +132,15 @@ public class HealthSystem
     {
         // Implement XP increase and level-up logic
         xp += exp;
+        if(xp >= 100)
+        {
+            if(level < 100)
+            {
+                level++;
+                xp = xp - 100;
+            }
+            
+            
+        }
     }
 }
