@@ -55,7 +55,9 @@ public class HealthSystem
     public void TakeDamage(int damage)
     {
         // Implement damage logic
-        Debug.Assert(damage == 30);
+
+        Debug.Assert(damage >= 0);
+        //damage = Math.Abs(damage);
 
         shield = shield - damage;
 
@@ -75,37 +77,48 @@ public class HealthSystem
             Revive();
         }
 
+        Debug.Assert(lives >= 0);
+
         if (health < 0)
         {
             health = 0;
         }
 
+        Debug.Assert(health >= 0);
     }
 
     public void Heal(int hp)
     {
         // Implement healing logic
-        Debug.Assert(hp < 0);
-        
+
+        Debug.Assert(hp >= 0);
+        //hp = Math.Abs(hp);
+
         health += hp;
 
         if (health > 100)
         {
             health = 100;
         }
+
+        Debug.Assert(hp <= 100);
     }
 
     public void RegenerateShield(int def)
     {
         // Implement shield regeneration logic
-        Debug.Assert(def < 0);
         
+        Debug.Assert(def >= 0);
+        //def = Math.Abs(def);
+
         shield += def;
         
         if (shield > 100)
         {
             shield = 100;
         }
+
+        Debug.Assert(def <= 100);
     }
 
     public void Revive()
@@ -115,9 +128,8 @@ public class HealthSystem
         health = 100;
         shield = 100;
 
-        Debug.Assert(0 <= health);
-        Debug.Assert(0 <= shield);
-        Debug.Assert(0 < lives);
+        Debug.Assert(100 == health);
+        Debug.Assert(100 == shield);
     }
 
     public void ResetGame()
@@ -131,6 +143,9 @@ public class HealthSystem
     public void IncreaseXP(int exp)
     {
         // Implement XP increase and level-up logic
+        Debug.Assert(exp >= 0);
+        //exp = Math.Abs(exp);
+
         xp += exp;
         if(xp >= 100)
         {
@@ -139,8 +154,6 @@ public class HealthSystem
                 level++;
                 xp = xp - 100;
             }
-            
-            
         }
     }
 }
